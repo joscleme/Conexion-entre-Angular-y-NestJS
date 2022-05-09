@@ -1,0 +1,41 @@
+<form [formGroup]="createForm">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <div *ngIf="nameControl.invalid && (nameControl.touched || nameControl.dirty)">
+        <span *ngIf="nameControl.hasError('required')" style="color: red;">Name field is required</span>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname">
+    </mat-form-field>
+
+    <div *ngIf="surnameControl.invalid && (surnameControl.touched || surnameControl.dirty)">
+        <span *ngIf="surnameControl.hasError('required')" style="color: red;">Surname field is required</span>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div *ngIf="descriptionControl.invalid && (descriptionControl.touched || descriptionControl.dirty)">
+        <span *ngIf="descriptionControl.hasError('required')" style="color: red;">Description field is required</span>
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input type="number" min="18" max="100" matInput formControlName="age">
+    </mat-form-field>
+
+    <div *ngIf="ageControl.invalid && (ageControl.touched || ageControl.dirty)">
+        <span *ngIf="ageControl.hasError('required')" style="color: red;">Age field is required</span>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="createForm.invalid" (click)="submitData()">Create</button>
+
+</form>
